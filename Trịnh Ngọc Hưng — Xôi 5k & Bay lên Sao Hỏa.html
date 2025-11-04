@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trịnh Ngọc Hưng — Xôi 5k & Bay lên Sao Hỏa</title>
+  <style>
+    :root{
+      --bg:#0f172a;
+      --card:#0b1220;
+      --accent:#ff6b6b;
+      --muted:#9aa4b2;
+      --glass: rgba(255,255,255,0.04);
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 600px at 10% 20%, #071733 0%, #021026 25%, #050612 100%), linear-gradient(180deg,#001022, #020615);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+    header{
+      padding:18px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      max-width:1100px;margin:0 auto;width:100%;
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#ff8a8a,#ff6b6b);display:grid;place-items:center;font-weight:800;color:#091923}
+    h1{margin:0;font-size:18px}
+    p.lead{margin:4px 0 0 0;color:var(--muted);font-size:13px}
+
+    main{max-width:1100px;margin:18px auto;padding:18px;display:grid;grid-template-columns:1fr 360px;gap:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:18px;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+    .hero{display:flex;gap:16px;align-items:center}
+    .avatar{width:110px;height:110px;border-radius:12px;background:linear-gradient(180deg,#0b1726,#071226);display:grid;place-items:center;font-size:20px;color:var(--accent);border:1px solid rgba(255,255,255,0.04)}
+    .stats{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+    .stat{flex:1 1 140px;background:rgba(255,255,255,0.02);border-radius:10px;padding:12px}
+    .stat .label{font-size:13px;color:var(--muted)}
+    .stat .value{font-size:18px;font-weight:700;margin-top:6px}
+
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--accent);color:#071923;font-weight:700;border:0;cursor:pointer}
+    .muted-btn{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:10px 12px;border-radius:10px;cursor:pointer}
+
+    aside .card{position:sticky;top:20px}
+
+    .timeline{margin-top:12px;display:flex;flex-direction:column;gap:10px}
+    .event{display:flex;gap:12px;align-items:center;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border:1px solid rgba(255,255,255,0.02)}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* Rocket */
+    .sky{
+      position:relative;
+      height:220px;
+      overflow:hidden;
+      background: linear-gradient(180deg,#021430,#051026 60%, #041024 100%);
+      border-radius:12px;padding:14px;margin-top:12px;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .planet{
+      position:absolute;right:8%;top:8%;width:84px;height:84px;border-radius:50%;
+      background:radial-gradient(circle at 30% 30%, #ffdf91, #ffb86b);
+      box-shadow:0 6px 30px rgba(255,160,80,0.12);
+      transform:translateZ(0);
+    }
+    .rocket{
+      position:absolute;left:20%;bottom:8%;
+      width:64px;height:64px;display:grid;place-items:center;
+      transform-origin:center bottom;
+      transition: transform 1s linear, bottom 1s linear, left 1s linear;
+    }
+    .rocket img{width:64px;height:64px}
+    .flying{animation:flyUp 4s ease-in forwards}
+    @keyframes flyUp {
+      0% { transform: translateY(0) scale(1) rotate(0deg); bottom:8%; left:20%;}
+      40% { transform: translateY(-40px) scale(1.05) rotate(-6deg); bottom:40%; left:35%;}
+      80% { transform: translateY(-320px) scale(1.2) rotate(8deg); bottom:90%; left:70%;}
+      100% { transform: translateY(-600px) scale(1.6) rotate(18deg); bottom:140%; left:92%;}
+    }
+
+    footer{max-width:1100px;margin:20px auto;padding:12px;color:var(--muted);font-size:13px}
+
+    @media (max-width:900px){
+      main{grid-template-columns:1fr;padding:14px}
+      .avatar{width:78px;height:78px}
+      .sky{height:180px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">TNH</div>
+      <div>
+        <h1>Trịnh Ngọc Hưng — Xôi 5k & Hành trình đến Sao Hỏa</h1>
+        <p class="lead">Ăn xôi 5.000₫ ở cổng nhà K mỗi ngày, rồi... bay lên Sao Hỏa (demo vui).</p>
+      </div>
+    </div>
+    <div>
+      <button class="btn" id="startFly">Cất cánh!</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="hero">
+        <div class="avatar">T.N.H</div>
+        <div>
+          <h2>Trịnh Ngọc Hưng</h2>
+          <p class="small" style="color:var(--muted);margin-top:6px">Thói quen: ăn xôi 5.000₫ (5k) ở cổng nhà K — mỗi ngày một phần. Giấc mơ: bay lên Sao Hỏa.</p>
+
+          <div class="stats" aria-live="polite">
+            <div class="stat">
+              <div class="label">Giá 1 phần xôi</div>
+              <div class="value" id="rice-price">5.000₫</div>
+            </div>
+            <div class="stat">
+              <div class="label">Tần suất</div>
+              <div class="value" id="freq">Mỗi ngày</div>
+            </div>
+            <div class="stat">
+              <div class="label">Tổng 1 ngày (ước)</div>
+              <div class="value" id="daily-total">5.000₫</div>
+            </div>
+          </div>
+
+          <div style="margin-top:14px">
+            <button class="btn" id="calc30">Tính chi 30 ngày</button>
+            <button class="muted-btn" id="reset">Đặt lại</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="result" style="margin-top:16px"></div>
+
+      <div class="sky" aria-hidden="false">
+        <div class="planet" title="Sao Hỏa (giả lập)"></div>
+        <div class="rocket" id="rocket">
+          <!-- SVG rocket -->
+          <svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g>
+              <ellipse cx="32" cy="46" rx="8" ry="4" fill="#ffcf66" opacity="0.18"/>
+              <path d="M32 4c6 0 12 6 12 12 0 4-1 8-3 11-1 2-3 3-4 5-1 1-2 3-2 4l-10 0c0-1-1-3-2-4-1-2-3-3-4-5C21 24 20 20 20 16 20 10 26 4 32 4z" fill="#ffffff"/>
+              <path d="M32 4c6 0 12 6 12 12 0 4-1 8-3 11-1 2-3 3-4 5-1 1-2 3-2 4l-6 0V4z" fill="#ff6b6b"/>
+              <rect x="26" y="22" width="12" height="10" rx="6" fill="#081a2a" opacity="0.85"/>
+              <path d="M20 34c-2 4-8 10-8 10s6-1 10-4c3-2 2-6-2-6z" fill="#ff6b6b"/>
+              <path d="M44 34c2 4 8 10 8 10s-6-1-10-4c-3-2-2-6 2-6z" fill="#ff6b6b"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+    </section>
+
+    <aside>
+      <div class="card">
+        <h3 style="margin-top:0">Lịch sử & Hoạt động</h3>
+        <div class="timeline" id="timeline">
+          <div class="event">
+            <div style="flex:1">
+              <strong>Ăn xôi: 5.000₫</strong>
+              <div class="small" style="margin-top:6px">Địa điểm: Cổng nhà K — <span id="date1">—</span></div>
+            </div>
+          </div>
+          <div class="event">
+            <div style="flex:1">
+              <strong>Giấc mơ: Bay lên Sao Hỏa</strong>
+              <div class="small" style="margin-top:6px">Trạng thái: <span id="flight-status">Chưa cất cánh</span></div>
+            </div>
+          </div>
+        </div>
+
+        <hr style="margin:12px 0;border:none;border-top:1px solid rgba(255,255,255,0.02)">
+
+        <div>
+          <h4 style="margin:0 0 8px 0">Gợi ý / Ý tưởng</h4>
+          <ul style="margin:0 0 0 18px;color:var(--muted);font-size:14px">
+            <li>Ghi nhật ký: theo dõi xôi đã ăn trong 7 ngày.</li>
+            <li>So sánh: 1 tháng x bao nhiêu tiền?</li>
+            <li>Thêm yếu tố lãng mạn: sức mạnh của ước mơ — bay lên sao Hỏa!</li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:10px">
+      <div class="small">© <span id="year"></span> Demo vui — Không phải lời khuyên.</div>
+      <div class="small">Made with 🚀</div>
+    </div>
+  </footer>
+
+  <script>
+    // Utils
+    function formatVND(n){
+      return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "₫";
+    }
+
+    const price = 5000;
+    document.getElementById('rice-price').textContent = formatVND(price);
+    document.getElementById('daily-total').textContent = formatVND(price);
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Timeline date -> today
+    const today = new Date();
+    document.getElementById('date1').textContent = today.toLocaleDateString('vi-VN');
+
+    const timeline = document.getElementById('timeline');
+    const resultEl = document.getElementById('result');
+
+    document.getElementById('calc30').addEventListener('click', ()=>{
+      const days = 30;
+      const total = price * days;
+      resultEl.innerHTML = `
+        <div style="padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.005));border:1px solid rgba(255,255,255,0.02)">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <strong>Ước tính cho ${days} ngày:</strong>
+            <span style="font-weight:700">${formatVND(total)}</span>
+          </div>
+          <div class="small" style="margin-top:8px">Nếu ăn mỗi ngày trong 1 năm: <strong>${formatVND(price * 365)}</strong></div>
+          <div class="small" style="margin-top:8px">Mẹo: nếu tiết kiệm số tiền này mỗi ngày, bạn có thể để dành cho "vé bay lên Sao Hỏa" (giả tưởng!).</div>
+        </div>
+      `;
+      // add timeline entry
+      const node = document.createElement('div');
+      node.className = 'event';
+      node.innerHTML = `<div style="flex:1">
+        <strong>Simulate: ${days} ngày xôi</strong>
+        <div class="small" style="margin-top:6px">Tổng: ${formatVND(total)} • ${new Date().toLocaleString('vi-VN')}</div>
+      </div>`;
+      timeline.insertBefore(node, timeline.firstChild);
+    });
+
+    document.getElementById('reset').addEventListener('click', ()=>{
+      resultEl.innerHTML = '';
+    });
+
+    // Rocket flight action
+    const rocket = document.getElementById('rocket');
+    const flightStatus = document.getElementById('flight-status');
+    document.getElementById('startFly').addEventListener('click', ()=>{
+      // animate rocket
+      rocket.classList.remove('flying');
+      // reflow to restart animation
+      void rocket.offsetWidth;
+      rocket.classList.add('flying');
+      flightStatus.textContent = 'Đang cất cánh 🚀';
+      // After animation ends (4s), mark arrived (playful)
+      setTimeout(()=> {
+        flightStatus.textContent = 'Đã đến Sao Hỏa (trong tưởng tượng) 🪐';
+        const node = document.createElement('div');
+        node.className = 'event';
+        node.innerHTML = `<div style="flex:1">
+          <strong>Bay lên Sao Hỏa — Hoàn thành</strong>
+          <div class="small" style="margin-top:6px">${new Date().toLocaleString('vi-VN')}</div>
+        </div>`;
+        timeline.insertBefore(node, timeline.firstChild);
+      }, 4200);
+    });
+
+    // Also allow clicking rocket to trigger small hop
+    rocket.addEventListener('click', ()=>{
+      rocket.classList.remove('flying');
+      void rocket.offsetWidth;
+      rocket.classList.add('flying');
+      flightStatus.textContent = 'Rocket nhảy một phát ✨';
+      setTimeout(()=> flightStatus.textContent = 'Sẵn sàng...', 2200);
+    });
+
+  </script>
+</body>
+</html>
